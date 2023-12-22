@@ -1,22 +1,12 @@
 name: 'LLM Review Bot'
 description: 'Review Pull Requests using LLMs'
 inputs:
-  azure_openai_api_key:
-    description: 'API Key for LLM'
-    required: true
-  azure_openai_endpoint:
-    description: 'Azure Endpoint for LLM'
-    required: true
-  azure_openai_deployment:
-    description: 'Azure Deployment name for LLM'
-    required: true
-  azure_openai_api_version:
-    description: 'API Version for LLM'
-    required: true
-    default: "2023-07-01-preview"
   file_pattern:
     description: 'Files to review'
     required: true
+  additional_user_prompt:
+    description: 'Additional user prompt to provide to the LLM, next to system prompt'
+    default: ''
 runs:
   using: "composite"
   steps:
@@ -32,6 +22,6 @@ runs:
   
     - name: "Run"
       run: |
-        python -m llm_action ${{ inputs.file_pattern }}
+        python -m llm_action ${{ inputs.file_pattern }} --user-instructions "${{ inputs.additional_user_prompt }}"
       shell: bash
   
