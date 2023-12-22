@@ -1,0 +1,31 @@
+name: 'LLM Review Bot'
+description: 'Review Pull Requests using LLMs'
+inputs:
+  file_pattern:
+    description: 'Files to review'
+    required: true
+  additional_user_prompt:
+    description: 'Additional user prompt to provide to the LLM, next to system prompt'
+    default: ''
+  template_name:
+    description: 'A predefined instruction template to use for the LLM'
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - name: 'Install Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+        cache: 'pip' # caching pip dependencies
+
+    - name: "Install requirements"
+      run: pip install .
+      shell: bash
+
+    - name: "Run"
+      run: |
+        python -m llm_review ${{ inputs.file_pattern }} \
+          --user-instruction "${{ inputs.additional_user_prompt }}" \
+          --template-name "${{ inputs.template_name }}"
+      shell: bash

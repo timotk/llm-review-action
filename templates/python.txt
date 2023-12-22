@@ -1,0 +1,5 @@
+Make sure that:
+- the code is pythonic.
+- the standard library is used where possible.
+- The code is not too complex.
+- The code is of good quality.

@@ -1,0 +1,28 @@
+on: [push]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    name: Review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: timotk/llm-review-action@v1
+        name: Review python code
+        with:
+          file_pattern: "examples/*.py"
+          template_name: "python"
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT}}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}
+      - uses: timotk/llm-review-action@v1
+        name: Emojify a song
+        with:
+          file_pattern: "examples/song.txt"
+          additional_user_prompt: "Suggest an emoji for each line, nothing else"
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: ${{ secrets.AZURE_OPENAI_ENDPOINT }}
+          AZURE_OPENAI_DEPLOYMENT: ${{ secrets.AZURE_OPENAI_DEPLOYMENT}}
+          AZURE_OPENAI_API_VERSION: ${{ secrets.AZURE_OPENAI_API_VERSION }}

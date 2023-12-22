@@ -1,0 +1,27 @@
+on: [push]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    name: Review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - uses: taiki-e/install-action@just
+      - name: Install tools
+        run: |
+          just init
+      - name: Install dependencies
+        run: |
+          just install
+      - name: Run pre-commit
+        run: just lint
+      - name: Run tests
+        run: |
+          AZURE_OPENAI_API_KEY="" \
+          AZURE_OPENAI_ENDPOINT="" \
+          AZURE_OPENAI_DEPLOYMENT="" \
+          AZURE_OPENAI_API_VERSION="" \
+          just test
