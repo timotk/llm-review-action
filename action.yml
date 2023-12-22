@@ -1,16 +1,16 @@
 name: 'LLM Review Bot'
 description: 'Review Pull Requests using LLMs'
 inputs:
-  api_key:
+  azure_openai_api_key:
     description: 'API Key for LLM'
     required: true
-  azure_endpoint:
+  azure_openai_endpoint:
     description: 'Azure Endpoint for LLM'
     required: true
-  azure_deployment:
+  azure_openai_deployment:
     description: 'Azure Deployment name for LLM'
     required: true
-  api_version:
+  azure_openai_api_version:
     description: 'API Version for LLM'
     required: true
     default: "2023-07-01-preview"
