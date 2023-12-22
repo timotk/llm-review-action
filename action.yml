@@ -31,7 +31,7 @@ runs:
       shell: bash
     
     - name: "Install requirements"
-      run: poetry install --only main
+      run: pip install .
       shell: bash
   
     - name: "Run"

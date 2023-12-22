@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "github-llm-action"
+name = "llm_action"
 version = "0.1.0"
 description = ""
 authors = ["Timo Uelen <timo.uelen@xebia.com>"]
