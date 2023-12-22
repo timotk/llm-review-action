@@ -6,7 +6,7 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-      - uses: timotk/github-llm-action@v2
+      - uses: timotk/github-llm-action@v1
         with:
             api_key: ${{ secrets.AZURE_OPENAI_API_KEY }}
             azure_endpoint: "https://xebia-openai-us.openai.azure.com/"
