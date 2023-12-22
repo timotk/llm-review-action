@@ -1,11 +1,9 @@
 # LLM Action - Review PRs with LLMs
-
-
+Use an LLM and user given instructions to annotate Pull Requests.
 
 ## Usage
 
 It runs through the Azure OpenAI service, so you need to provide your credentials for that.
-
 
 ```yaml
 - uses: timotk/github-llm-action@v1
