@@ -9,7 +9,7 @@ jobs:
       - uses: timotk/github-llm-action@v1
         name: Review plain text files
         with:
-          file_pattern: "examples/*.txt"
+          file_pattern: "examples/blog.txt"
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
