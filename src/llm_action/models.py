@@ -1,6 +1,8 @@
 from typing import Optional
-from pydantic import BaseModel, RootModel
-from pydantic import Field
+
+from pydantic import BaseModel, Field, RootModel
+
+
 class Comment(BaseModel):
     line_start: int = Field(
         ..., description="The line number of the content at which the comment starts"

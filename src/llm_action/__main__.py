@@ -1,8 +1,8 @@
-import json
 import os
-from pathlib import Path
 import string
+from pathlib import Path
 from typing import Optional
+
 import typer
 from openai import AzureOpenAI
 
@@ -28,7 +28,7 @@ client = AzureOpenAI(
 
 PROMPT = string.Template(
     """
-Please review my text. For each line, make a suggestion. 
+Please review my text. For each line, make a suggestion.
 Consider writing style, conciseness and writing style.
 If you do, output it as follows:
 ```shell
@@ -52,7 +52,6 @@ def comment_as_github_annotation(comment: Comment, file: Path) -> str:
         s += f",endLine={comment.line_end}"
     s += f"::{comment.content}"
     return s
-
 
 
 def get_file_list(pattern: str) -> list[Path]:
@@ -84,7 +83,7 @@ def read_file(path: Path) -> Optional[str]:
         content = f.read()
         if len(content) == 0:
             print("File is empty!")
-            return
+            return None
     return content
 
 
