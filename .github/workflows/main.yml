@@ -7,8 +7,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: timotk/github-llm-action@v1
+        name: Review plain text files
         with:
-          file_pattern: "examples/*.txt"
+          file_pattern: "examples/blog.txt"
+        env:
+          AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
+          AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
+          AZURE_OPENAI_DEPLOYMENT: "gpt-35-turbo-us"
+          AZURE_OPENAI_API_VERSION: "2023-07-01-preview"
+      - uses: timotk/github-llm-action@v1
+        name: Review python code
+        with:
+          file_pattern: "examples/*.py"
+          additional_user_prompt: "Make sure the code is pythonic"
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
