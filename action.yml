@@ -36,6 +36,11 @@ runs:
   
     - name: "Run"
       run: |
-        python -m llm_action
+        python -m llm_action \
+        --azure-openai-api-key=azure_openai_api_key \
+        --azure-openai-endpoint=azure_openai_endpoint \
+        --azure-openai-deployment=azure_openai_deployment \
+        --azure-openai-api-version=azure_openai_api_version \
+        --files=files
       shell: bash
   
