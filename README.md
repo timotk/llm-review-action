@@ -23,3 +23,12 @@ If you want to add additional instructions, use:
     file_pattern: "examples/blog.txt"
     additional_user_prompt: "Make suggestions for conciseness, clarity and writing style."
 ```
+
+Let's review some python code:
+```yaml
+- uses: timotk/github-llm-action@v1
+  with:
+    file_pattern: "examples/blog.txt"
+    additional_user_prompt: "Make sure the code is pythonic"
+```
+which will result in the following annotations:
