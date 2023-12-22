@@ -1,24 +1,24 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'LLM Review Bot'
+description: 'Review Pull Requests using LLMs'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  api_key:
+    description: 'API Key for LLM'
     required: true
-    default: 'World'
-outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
+  azure_endpoint:
+    description: 'Azure Endpoint for LLM'
+    required: true
+  azure_deployment:
+    description: 'Azure Deployment name for LLM'
+    required: true
+  api_version:
+    description: 'API Version for LLM'
+    required: true
+    default: "2023-07-01-preview"
+  files:
+    description: 'Files to review'
+    required: true
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
+    - run: echo ${{ inputs.files }}
       shell: bash
-    - id: random-number-generator
-      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
-      shell: bash
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      shell: bash
-    - run: goodbye.sh
-      shell: bash
-
