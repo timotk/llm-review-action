@@ -2,7 +2,6 @@
 Use an LLM and user given instructions to annotate Pull Requests.
 
 ## Usage
-
 It runs through the Azure OpenAI service, so you need to provide your credentials for that.
 
 ```yaml
@@ -24,6 +23,9 @@ If you want to add additional instructions, use:
     additional_user_prompt: "Make suggestions for conciseness, clarity and writing style."
 ```
 
+
+# Examples
+## Reviewing code
 It is not limited to just text. Here, we create an action to review some python code, with an additional user prompt:
 ```yaml
 - uses: timotk/github-llm-action@v1
@@ -33,3 +35,15 @@ It is not limited to just text. Here, we create an action to review some python 
 ```
 which will result in the following annotations:
 ![](docs/python_annotations.png)
+
+## Adding emojis to song lyrics
+```yaml
+- uses: timotk/github-llm-action@v1
+  name: Emojify a song
+  with:
+    file_pattern: "examples/song.txt"
+    additional_user_prompt: "Suggest an emoji for each line, nothing else"
+```
+
+This will result in:
+![](docs/song_annotations.png)
