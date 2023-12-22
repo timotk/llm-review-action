@@ -14,7 +14,7 @@ inputs:
     description: 'API Version for LLM'
     required: true
     default: "2023-07-01-preview"
-  files:
+  file_pattern:
     description: 'Files to review'
     required: true
 runs:
@@ -26,21 +26,12 @@ runs:
         python-version: 3.11
         cache: 'pip' # caching pip dependencies
 
-    - name: "List files"
-      run: echo ${{ inputs.files }}
-      shell: bash
-    
     - name: "Install requirements"
       run: pip install .
       shell: bash
   
     - name: "Run"
       run: |
-        python -m llm_action \
-        --azure-openai-api-key=azure_openai_api_key \
-        --azure-openai-endpoint=azure_openai_endpoint \
-        --azure-openai-deployment=azure_openai_deployment \
-        --azure-openai-api-version=azure_openai_api_version \
-        --files=files
+        python -m llm_action ${{ inputs.file_pattern }}
       shell: bash
   

@@ -1,14 +1,14 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  review:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Review
     steps:
       - uses: actions/checkout@v4
       - uses: timotk/github-llm-action@v1
         with:
-          files: "example.txt"
+          file_pattern: "example.txt"
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
