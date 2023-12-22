@@ -24,7 +24,7 @@ If you want to add additional instructions, use:
     additional_user_prompt: "Make suggestions for conciseness, clarity and writing style."
 ```
 
-Let's review some python code:
+It is not limited to just text. Here, we create an action to review some python code, with an additional user prompt:
 ```yaml
 - uses: timotk/github-llm-action@v1
   with:
@@ -32,3 +32,4 @@ Let's review some python code:
     additional_user_prompt: "Make sure the code is pythonic"
 ```
 which will result in the following annotations:
+![](docs/python_annotations.png)
