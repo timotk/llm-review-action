@@ -20,7 +20,7 @@ jobs:
         with:
           file_pattern: "examples/*.py"
           additional_user_prompt: "Make sure the code is pythonic"
-          env:
+        env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
           AZURE_OPENAI_DEPLOYMENT: "gpt-35-turbo-us"
