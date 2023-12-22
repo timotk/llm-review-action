@@ -36,6 +36,6 @@ runs:
   
     - name: "Run"
       run: |
-        poetry run python main.py
+        python -m llm_action
       shell: bash
   
