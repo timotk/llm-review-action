@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: timotk/github-llm-action@v1
         with:
-          file_pattern: "example.txt"
+          file_pattern: "blog.txt"
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
