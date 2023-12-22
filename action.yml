@@ -20,5 +20,22 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo ${{ inputs.files }}
+    - name: 'Install Python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+        cache: 'poetry' # caching poetry dependencies
+
+    - name: "List files"
+      run: echo ${{ inputs.files }}
       shell: bash
+    
+    - name: "Install requirements"
+      run: poetry install --only main
+      shell: bash
+  
+    - name: "Run"
+      run: |
+        poetry run python main.py
+      shell: bash
+  
