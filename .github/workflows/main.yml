@@ -28,8 +28,8 @@ jobs:
       - uses: timotk/github-llm-action@v1
         name: Review python code
         with:
-          file_pattern: "examples/zen.txt"
-          additional_user_prompt: "Suggest emojis for each line"
+          file_pattern: "examples/song.txt"
+          additional_user_prompt: "Suggest an emoji for each line, nothing else"
         env:
           AZURE_OPENAI_API_KEY: ${{ secrets.AZURE_OPENAI_API_KEY }}
           AZURE_OPENAI_ENDPOINT: "https://xebia-openai-us.openai.azure.com/"
