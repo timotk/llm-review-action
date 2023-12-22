@@ -22,6 +22,6 @@ runs:
   
     - name: "Run"
       run: |
-        python -m llm_action ${{ inputs.file_pattern }} --user-instructions "${{ inputs.additional_user_prompt }}"
+        python -m llm_action ${{ inputs.file_pattern }} --user-instruction "${{ inputs.additional_user_prompt }}"
       shell: bash
   
