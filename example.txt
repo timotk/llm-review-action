@@ -1,0 +1,6 @@
+When developing and deploying web APIs, you or your users might be interested in its performance: How many requests can it handle? Why is it not performing as expected? In this blogpost, we'll measure the performance of your API and provide insights through visualizations. 
+
+After reading, you should be able to test your API on the following:
+- Response time
+- Handling of multiple sequential requests
+- Handling of multiple parallel requests

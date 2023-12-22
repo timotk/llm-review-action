@@ -6,12 +6,9 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-    #   - id: foo
-    #     uses: timotk/github-llm-action@v1
-    #     with:
-    #       who-to-greet: 'Mona the Octocat'
-    #   - run: echo random-number ${{ steps.foo.outputs.random-number }}
-    #     shell: bash
-      - run: |
-            text="This is a Warning"
-            echo "::warning file=goodbye.sh,line=1,col=5::$text"
+      - uses: timotk/github-llm-action@v1
+        with:
+            api_key:  ${{ secrets.AZURE_OPENAI_API_KEY }}
+            azure_endpoint: "https://xebia-openai-us.openai.azure.com/"
+            azure_deployment: "gpt-35-turbo-us"
+            files: "example.txt"
