@@ -18,14 +18,23 @@ runs:
       with:
         python-version: 3.11
         cache: 'pip' # caching pip dependencies
-
+    - name: Get all changed markdown files
+      id: changed-markdown-files
+      uses: tj-actions/changed-files@v41
+      with:
+        # Avoid using single or double quotes for multiline patterns
+        files: ${{ inputs.file_pattern }}
     - name: "Install requirements"
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
       run: pip install $GITHUB_ACTION_PATH/
       shell: bash
 
     - name: "Run"
+      if: steps.changed-markdown-files.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-markdown-files.outputs.all_changed_files }}
       run: |
-        python -m llm_review ${{ inputs.file_pattern }} \
+        python -m llm_review $ALL_CHANGED_FILES \
           --user-instruction "${{ inputs.additional_user_prompt }}" \
           --template-name "${{ inputs.template_name }}"
       shell: bash
