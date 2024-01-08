@@ -95,6 +95,10 @@ def review_content(content: str, user_instruction: Optional[str]) -> list[Commen
     llm_output = query_llm(prompt)
     if not llm_output:
         return []
+
+    # Strip backticks which sometimes are given by the llm
+    llm_output = llm_output.lstrip("```json").rstrip("```")
+
     try:
         comments = Comments.model_validate_json(llm_output).root
     except ValidationError as e:
