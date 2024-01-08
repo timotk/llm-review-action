@@ -24,7 +24,7 @@ PROMPT = string.Template(
     """
 Please review my text. For each line, make a suggestion.
 Consider writing style, conciseness and writing style.
-If you do, output it as follows:
+If you do, output it according to the following JSON schema. Only output raw JSON. Do not write anything else.:
 ```shell
 ::notice file={$filepath},line={lineno},col=1::{comment}
 ```
