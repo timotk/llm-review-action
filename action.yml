@@ -20,7 +20,7 @@ runs:
         cache: 'pip' # caching pip dependencies
 
     - name: "Install requirements"
-      run: pip install .
+      run: pip install $GITHUB_ACTION_PATH/
       shell: bash
 
     - name: "Run"
